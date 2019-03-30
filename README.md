@@ -4,8 +4,8 @@
 
 Datasets used :
 
-UCF_50_CC
-Shanghai Tech
+[UCF_50_CC](https://www.crcv.ucf.edu/data/UCF50.php)
+[Shanghai Tech](https://github.com/desenzhou/ShanghaiTechDataset)
 
 ## Running the model
 
