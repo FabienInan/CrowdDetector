@@ -1,6 +1,6 @@
 # Crowd detector
 
-[WIP] Implementation of SANet neural network to count crowd on pictures
+[WIP] Implementation of SANet neural network to count crowd on pictures.
 
 ## Initialization
 
