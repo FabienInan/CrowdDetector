@@ -8,13 +8,13 @@
 mkdir datasets
 ```
 
-- Download this 2 datasets:
+- Download this 2 datasets :
 
     [UCF_CC_50](https://www.crcv.ucf.edu/data/UCF50.php)
 
     [Shanghai Tech](https://github.com/desenzhou/ShanghaiTechDataset)
 
-- Paste them into datasets folder, then run:
+- Paste them into datasets folder, then run :
 
 ```
 python main.py --preProcessData
