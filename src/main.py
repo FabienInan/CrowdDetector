@@ -8,4 +8,7 @@ if len(sys.argv) > 1 and sys.argv[1] == '--preProcessData':
     preProcessDataSets.preProcessShanghaiTechA()
     print('Preprocessing ShanghaiTech B dataset ...')
     preProcessDataSets.preProcessShanghaiTechB()
+    sys.exit()
+
+
 

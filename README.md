@@ -16,10 +16,12 @@ mkdir datasets
 
 -Paste them into datasets folder
 
+```
+python main.py --preProcessData
+```
+
 ## Running the model
 
 ```
 python main.py
 ```
-Optional argument:
-```--preProcessData``` to generate densityMap and store the groundTrouth in a count.txt file
