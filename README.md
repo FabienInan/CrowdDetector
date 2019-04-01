@@ -21,3 +21,5 @@ mkdir datasets
 ```
 python main.py
 ```
+Optional argument:
+```--preProcessData``` to generate densityMap and store the groundTrouth in a count.txt file
