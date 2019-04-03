@@ -122,7 +122,7 @@ def generateDensityMap(imageSize, points, path, sigma, kernelSize):
     if len(points) == 0:
         return
 
-    mapDensity = np.zeros([imageSize[1], imageSize[0]])
+    densityMap = np.zeros([imageSize[1], imageSize[0]])
 
     for i in range(1, len(points + 1)):
         if points[i][0] < imageSize[0] and points[i][1] < imageSize[1] - 1 :
@@ -141,9 +141,9 @@ def generateDensityMap(imageSize, points, path, sigma, kernelSize):
             if y2 > imageSize[1] - 1:
                 y2 = imageSize[1] - 1
             gaussianFilter = gaussianKernel(y2-y1+1, x2-x1+1, sigma)
-            mapDensity[y1:y2+1, x1:x2+1] = mapDensity[y1:y2+1, x1:x2+1]+ gaussianFilter
+            densityMap[y1:y2+1, x1:x2+1] = densityMap[y1:y2+1, x1:x2+1]+ gaussianFilter
 
-    np.savetxt(path + '.csv', mapDensity, '%f', delimiter=",")
+    np.savetxt(path + '.csv', densityMap, '%f', delimiter=",")
 
 
 def gaussianKernel(sizeX, sizeY, sigma):
@@ -151,7 +151,7 @@ def gaussianKernel(sizeX, sizeY, sigma):
     g = np.exp(-((x**2 + y**2)/(2.0*sigma**2)))
     return g/g.sum()
 
-def displayMapDensity(mapDensity, title):
-    plt.imshow(mapDensity, cmap=cm.jet)
+def displaydensityMap(densityMap, title):
+    plt.imshow(densityMap, cmap=cm.jet)
     plt.title(title)
     plt.show()
