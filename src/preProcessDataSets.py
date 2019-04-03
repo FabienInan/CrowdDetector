@@ -5,6 +5,8 @@ import math
 import os
 import shutil
 import random
+import matplotlib.pyplot as plt
+import matplotlib.cm as cm
 
 def preProcessUCFCC50():
 
@@ -120,7 +122,7 @@ def generateDensityMap(imageSize, points, path, sigma, kernelSize):
     if len(points) == 0:
         return
 
-    mapDensity = np.zeros(imageSize)
+    mapDensity = np.zeros([imageSize[1], imageSize[0]])
 
     for i in range(1, len(points + 1)):
         if points[i][0] < imageSize[0] and points[i][1] < imageSize[1] - 1 :
@@ -138,12 +140,18 @@ def generateDensityMap(imageSize, points, path, sigma, kernelSize):
                 x2 = imageSize[0] - 1
             if y2 > imageSize[1] - 1:
                 y2 = imageSize[1] - 1
-            gaussianFilter = gaussianKernel(x2-x1+1, y2-y1+1, sigma)
-            mapDensity[x1:x2+1, y1:y2+1] = mapDensity[x1:x2+1, y1:y2+1] + gaussianFilter
+            gaussianFilter = gaussianKernel(y2-y1+1, x2-x1+1, sigma)
+            mapDensity[y1:y2+1, x1:x2+1] = mapDensity[y1:y2+1, x1:x2+1]+ gaussianFilter
 
     np.savetxt(path + '.csv', mapDensity, '%f', delimiter=",")
+
 
 def gaussianKernel(sizeX, sizeY, sigma):
     x, y = np.mgrid[-sizeX//2 + 1:sizeX//2 + 1, -sizeY//2 + 1:sizeY//2 + 1]
     g = np.exp(-((x**2 + y**2)/(2.0*sigma**2)))
     return g/g.sum()
+
+def displayMapDensity(mapDensity, title):
+    plt.imshow(mapDensity, cmap=cm.jet)
+    plt.title(title)
+    plt.show()
